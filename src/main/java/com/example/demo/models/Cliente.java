@@ -6,7 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import antlr.collections.List;
+
 
 @Entity
 @Table(name = "Cliente")
@@ -16,9 +16,20 @@ public class Cliente{
     @Column(unique = true,nullable = false)
     private Long idUsuario;
 
+	public Long getIdUsuario() {
+		return this.idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public Cliente (){
 
 	}
+
+	
+
 
     @Column(length = 50, nullable = false)
     private String nombre;
@@ -91,8 +102,15 @@ public class Cliente{
 		this.telefono = telefono;
 	}
 
+	//Bidireccionamiento
+	public Cliente (Long idUsuario){
+		this.idUsuario = idUsuario;
+
+	}
+
+
 	//llave
 	@OneToMany(mappedBy = "cliente")
-	Set<Reserva> reservaList;
+	private Set<Reserva> reservaList;
     
 }

@@ -47,24 +47,25 @@ public class Reserva {
 	}
 
    //llave foranea
+   //BIdireccionamiento
    @ManyToOne
    @JoinColumn(name = "clientefk")
-   Cliente cliente;
+   	Cliente cliente;
 
-
-
-
-	/*@Column( nullable = false)
-	private Long clientefk;
-
-	public Long getClientefk() {
-		return this.clientefk;
+	public Reserva(Cliente cliente) {
+	this.cliente = cliente;
 	}
 
-	public void setClientefk(Long clientefk) {
-		this.clientefk = clientefk;
+	public Cliente getCliente() {
+		return this.cliente;
 	}
 
-	*/
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	
+
+
 
 }
