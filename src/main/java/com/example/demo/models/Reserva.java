@@ -13,6 +13,10 @@ public class Reserva {
     @Column(unique = true,nullable = false)
     private Long idReserva;
 
+	public Reserva(){
+		
+	}
+
 	public Long getIdReserva() {
 		return this.idReserva;
 	}
@@ -41,15 +45,26 @@ public class Reserva {
 	public void setIdaVuelta(boolean idaVuelta) {
 		this.idaVuelta = idaVuelta;
 	}
-	@Column(length = 11, nullable = false)
-	private int usuarioid;
 
-	public int getUsuarioid() {
-		return this.usuarioid;
+   //llave foranea
+   @ManyToOne
+   @JoinColumn(name = "clientefk")
+   Cliente cliente;
+
+
+
+
+	/*@Column( nullable = false)
+	private Long clientefk;
+
+	public Long getClientefk() {
+		return this.clientefk;
 	}
 
-	public void setUsuarioid(int usuarioid) {
-		this.usuarioid = usuarioid;
+	public void setClientefk(Long clientefk) {
+		this.clientefk = clientefk;
 	}
+
+	*/
 
 }

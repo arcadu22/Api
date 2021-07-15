@@ -2,7 +2,11 @@ package com.example.demo.models;
 
 
 
+import java.util.Set;
+
 import javax.persistence.*;
+
+import antlr.collections.List;
 
 @Entity
 @Table(name = "Cliente")
@@ -11,6 +15,10 @@ public class Cliente{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
     private Long idUsuario;
+
+	public Cliente (){
+
+	}
 
     @Column(length = 50, nullable = false)
     private String nombre;
@@ -82,5 +90,9 @@ public class Cliente{
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	//llave
+	@OneToMany(mappedBy = "cliente")
+	Set<Reserva> reservaList;
     
 }
