@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Reserva")
 public class Reserva {
-	
+	//creacion de la tabla reserva
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
