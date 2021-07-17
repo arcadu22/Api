@@ -30,6 +30,7 @@ public class controladorCliente{
         return clienteServices.obtClientes();
     }
 
+   
     @PostMapping()
     public Cliente guardarUsuario(@RequestBody Cliente cliente) {
         return this.clienteServices.guardarCliente(cliente);

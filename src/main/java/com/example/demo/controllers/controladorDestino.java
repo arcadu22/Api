@@ -3,46 +3,49 @@ package com.example.demo.controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.example.demo.models.Reserva;
-import com.example.demo.services.servicesReserva;
+import com.example.demo.models.Destino;
+import com.example.demo.services.servicesCliente;
+import com.example.demo.services.servicesDestino;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/reserva")
-public class controladorReserva{
+@RequestMapping("/destino")
+public class controladorDestino {
     @Autowired
-    servicesReserva reservaServices;
+    servicesDestino destinoServices;
 
     @GetMapping()
-    public ArrayList<Reserva> obtenerReserva() {
-        return reservaServices.obtReserva();
+    public ArrayList<Destino> obtenterOrigen(){
+        return this.destinoServices.obtDestino();
     }
 
     @PostMapping()
-    public Reserva guardarReserva(@RequestBody Reserva reserva) {
-        return this.reservaServices.guardarReserva(reserva);
+    public Destino guardarOrigen(@RequestBody Destino destino){
+        return this.destinoServices.guardarDestino(destino);
     }
-    
-    @GetMapping(path ="/{id}")
-    public Optional<Reserva> obtenerReservaPorId(@PathVariable("id") Long  id) {
-        return this.reservaServices.obtenerId(id);
+
+    @GetMapping(path = "/{id}")
+    public Optional<Destino> obtenerDestinoPorId(@PathVariable("id") Long id){
+        return this.destinoServices.obtenerId(id);
     }
-    
+
     @DeleteMapping(path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
-        boolean ok = this.reservaServices.EliminarReserva(id);
+        boolean ok = this.destinoServices.EliminarDestino(id);
         if (ok) {
             return "Se elimino el usuario con el id "+id;
         } else {
             return "No se pudo eliminar el usuario con el id"+id;
         }
     }
+
+
 }

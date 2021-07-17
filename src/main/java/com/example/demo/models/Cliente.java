@@ -1,21 +1,44 @@
 package com.example.demo.models;
 
-
-
 import java.util.Set;
 
 import javax.persistence.*;
 
-
-
 @Entity
 @Table(name = "Cliente")
-public class Cliente{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true,nullable = false)
-    private Long idUsuario;
+public class Cliente {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 
+	// atributos
+	private Long idUsuario;
+
+	@Column(length = 50, nullable = false)
+	private String nombre;
+
+	@Column(length = 50, nullable = false)
+	private String apellido;
+
+	@Column(length = 11, nullable = false)
+	private int edad;
+
+	@Column(length = 20, nullable = false)
+	private String documento;
+
+	
+	@Column(length = 40, nullable = false)
+	private String email;
+
+	@Column(length = 40, nullable = false)
+	private String telefono;
+
+	// contructor
+	public Cliente() {
+
+	}
+
+	// Metodos Get y Set
 	public Long getIdUsuario() {
 		return this.idUsuario;
 	}
@@ -23,16 +46,6 @@ public class Cliente{
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
-	public Cliente (){
-
-	}
-
-	
-
-
-    @Column(length = 50, nullable = false)
-    private String nombre;
 
 	public String getNombre() {
 		return this.nombre;
@@ -42,10 +55,6 @@ public class Cliente{
 		this.nombre = nombre;
 	}
 
-
-    @Column(length = 50, nullable = false)
-    private String apellido;
-
 	public String getApellido() {
 		return this.apellido;
 	}
@@ -53,10 +62,6 @@ public class Cliente{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
-    
-    @Column(length = 11, nullable = false)
-    private int edad;
 
 	public int getEdad() {
 		return this.edad;
@@ -66,10 +71,6 @@ public class Cliente{
 		this.edad = edad;
 	}
 
-
-    @Column(length = 20, nullable = false)
-    private String documento;
-
 	public String getDocumento() {
 		return this.documento;
 	}
@@ -77,10 +78,6 @@ public class Cliente{
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
-
-   
-    @Column(length = 40,nullable = false)
-    private String email;
 
 	public String getEmail() {
 		return this.email;
@@ -90,10 +87,6 @@ public class Cliente{
 		this.email = email;
 	}
 
-   
-    @Column(length = 40, nullable = false)
-    private String telefono;
-
 	public String getTelefono() {
 		return this.telefono;
 	}
@@ -102,15 +95,19 @@ public class Cliente{
 		this.telefono = telefono;
 	}
 
-	//Bidireccionamiento
-	public Cliente (Long idUsuario){
+	// Bidireccionamiento
+	public Cliente(Long idUsuario) {
 		this.idUsuario = idUsuario;
 
 	}
 
-
-	//llave
+	// llave FK
 	@OneToMany(mappedBy = "cliente")
 	private Set<Reserva> reservaList;
-    
+
+	//llave FK Tiquete
+	/*
+	@OneToMany(mappedBy = "tiquete")
+	private Set<Tiquete> tiqueteList;
+*/
 }

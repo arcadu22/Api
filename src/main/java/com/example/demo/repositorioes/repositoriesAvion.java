@@ -1,11 +1,11 @@
 package com.example.demo.repositorioes;
 
-import com.example.demo.models.Reserva;
+import com.example.demo.models.Avion;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface repositoriesReserva extends CrudRepository<Reserva,Long>{
+public interface repositoriesAvion  extends CrudRepository<Avion,Long> {
     
 }
