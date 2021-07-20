@@ -7,35 +7,39 @@ import com.example.demo.models.Tiquete;
 import com.example.demo.repositorioes.repositoriesTiquete;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class servicesTiquete {
     @Autowired
-    repositoriesTiquete tiqueteRepositori;
 
-    //ver todos los usuarios
-    public ArrayList<Tiquete> obtTiquete(){
+    repositoriesTiquete tiqueteRepositori;
+    
+     //Ver todos los Tiquetes
+     public ArrayList<Tiquete> obtTiquete(){
         return (ArrayList<Tiquete>) tiqueteRepositori.findAll();
     }
 
-    //Guardar tiquete
-    public Tiquete guardarTiquete(Tiquete tiquete){
+       //Guardar Tiquete
+       public Tiquete guardarTiquete(Tiquete tiquete){
         return tiqueteRepositori.save(tiquete);
     }
 
-    //Buscar por ID Tiquete 
-    public Optional<Tiquete>obtenerId(Long id){
+
+     //Buscar por ID Tiquete
+     public Optional<Tiquete>obtenerId(Long id){
         return tiqueteRepositori.findById(id);
     }
 
     //Eliminar Tiquete
     public boolean EliminarTiquete(Long id){
-        try{
+        try {
             tiqueteRepositori.deleteById(id);
             return true;
-        } catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
+
+
 }
-
-

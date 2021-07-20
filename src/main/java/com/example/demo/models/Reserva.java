@@ -2,13 +2,18 @@
 package com.example.demo.models;
 
 import java.sql.Date;
-
 import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 @Entity
 @Table(name = "Reserva")
 public class Reserva {
-	// creacion de la tabla reserva
+	/*creacion de la tabla reserva
+	tabla con informacion de la fecha en que se realizo la reserva del tiquete
+	y si se compro tiquete de ida y regreso */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
@@ -54,6 +59,9 @@ public class Reserva {
 	// BIdireccionamiento
 	@ManyToOne
 	@JoinColumn(name = "clientefk")
+	@OnDelete (action = OnDeleteAction.CASCADE)
+
+	
 	Cliente cliente; // variable de la clase cliente que es una FK
 
 	// cuntructor de la clase reserva, resive un objeto cleente para lograr el
@@ -68,5 +76,6 @@ public class Reserva {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	
 	}
 }

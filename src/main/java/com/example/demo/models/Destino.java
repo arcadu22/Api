@@ -1,6 +1,9 @@
 package com.example.demo.models;
 
 import javax.persistence.Entity;
+
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,13 +16,13 @@ public class Destino {
     // atributos
 	private Long idDestino;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 40, nullable = false)
 	private String aeropuerto;
 
-	@Column(length = 50, nullable = false)
+	@Column(length = 40, nullable = false)
 	private String ciudad;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 40, nullable = false)
 	private String pais;
 
     public Destino() {
@@ -58,5 +61,13 @@ public class Destino {
     public void setPais(String pais) {
         this.pais = pais;
     }
+     
+    public Destino(Long idDestino){
+        this.idDestino = idDestino;
+    }
+
+    //Relacion con la tabla Tiquete 
+    @OneToMany(mappedBy = "destino")
+	private Set<Tiquete> tiqueteList;
 
 }

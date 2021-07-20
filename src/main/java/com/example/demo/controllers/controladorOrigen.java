@@ -42,9 +42,9 @@ public class controladorOrigen {
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.origenServices.EliminarOrigen(id);
         if (ok) {
-            return "Se elimino el usuario con el id "+id;
+            return "Se elimino el Origen con el id ";
         } else {
-            return "No se pudo eliminar el usuario con el id"+id;
+            return "No se pudo eliminar el Origen con el id";
         }
     }
 }

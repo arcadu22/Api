@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,22 +41,17 @@ public class Tiquete {
     public Tiquete() {
     }
 
-    /*
-
     //llave foranea
     //bidireccionamiento
     @ManyToOne
     @JoinColumn(name = "clientefk" )
     Cliente cliente; //variable de la clase cliente que es una FK
 
-    //constructor de la clase tiquete, resive un objeto cliente
-    //Bidireccionamiento
-
     public Tiquete(Cliente cliente){
         this.cliente = cliente;
 
     }
-
+    
     public Cliente getCliente() {
         return this.cliente;
     }
@@ -64,5 +60,61 @@ public class Tiquete {
         this.cliente = cliente;
     }
 
-    */
+    //Fk Tiquete
+    /////////////////////////////////////////
+    @ManyToOne
+    @JoinColumn(name = "destinoFk")
+    Destino destino;
+    
+    public Tiquete(Destino destino){
+        this.destino = destino;
+
+    }
+
+    public Destino getDestino(){
+        return this.destino;
+    }
+
+    public void setDestino (Destino destino){
+        this.destino = destino;
+    }
+    //constructor de la clase tiquete, resive un objeto cliente
+    //Bidireccionamiento
+    //fin bidireccional Destino en Tiquete
+
+
+        @ManyToOne
+        @JoinColumn(name = "origenFk")
+        Origen origen;
+    
+    public Tiquete (Origen origen){
+        this.origen = origen;
+    }
+
+    public Origen getOrigent(){
+        return this.origen;
+    }
+
+    public void setOrigen (Origen origen){
+        this.origen = origen;
+    }
+
+ /////////////////fk  AVION////////////
+ 
+   
+    @ManyToOne
+    @JoinColumn(name = "avionFk")
+    Avion avion;
+
+    public Tiquete (Avion avion){
+    this.avion = avion;
+    }
+
+    public Avion getAvion(){
+    return this.avion;
+    }
+
+    public void setAvion (Avion avion){
+    this.avion = avion;
+    }
 }

@@ -40,9 +40,9 @@ public class controladorReserva{
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.reservaServices.EliminarReserva(id);
         if (ok) {
-            return "Se elimino el usuario con el id "+id;
+            return "Se elimino la Reserva con el id " +id;
         } else {
-            return "No se pudo eliminar el usuario con el id"+id;
+            return "No se pudo eliminar la Reserva con el id " +id;
         }
     }
 }

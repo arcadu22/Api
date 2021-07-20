@@ -3,8 +3,8 @@ package com.example.demo.controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.example.demo.models.Destino;
-import com.example.demo.services.servicesDestino;
+import com.example.demo.models.Tiquete;
+import com.example.demo.services.servicesTiquete;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,35 +16,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/destino")
-public class controladorDestino {
+@RequestMapping("/tiquete")
+public class controladorTiquete {
     @Autowired
-    servicesDestino destinoServices;
+    servicesTiquete tiqueteServices;
 
     @GetMapping()
-    public ArrayList<Destino> obtenterOrigen(){
-        return this.destinoServices.obtDestino();
+    public ArrayList<Tiquete> obtenterTiquete(){
+        return this.tiqueteServices.obtTiquete();
     }
 
     @PostMapping()
-    public Destino guardarOrigen(@RequestBody Destino destino){
-        return this.destinoServices.guardarDestino(destino);
+    public Tiquete guardarTiquete(@RequestBody Tiquete tiquete){
+        return this.tiqueteServices.guardarTiquete(tiquete);
     }
 
+    
     @GetMapping(path = "/{id}")
-    public Optional<Destino> obtenerDestinoPorId(@PathVariable("id") Long id){
-        return this.destinoServices.obtenerId(id);
+    public Optional<Tiquete> obtenerTiquetePorId(@PathVariable("id") Long id){
+        return this.tiqueteServices.obtenerId(id);
+    
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path =  "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
-        boolean ok = this.destinoServices.EliminarDestino(id);
+        boolean ok = this.tiqueteServices.EliminarTiquete(id);
         if (ok) {
-            return "Se elimino el Destino con el id ";
+            return "Se elimino el tiquete con el id "+ id;
         } else {
-            return "No se pudo eliminar el Destino con el id";
+            return "No se pudo eliminar el tiquete con el id"+ id;
         }
     }
-
 
 }

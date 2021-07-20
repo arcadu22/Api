@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -70,8 +72,14 @@ public class Avion {
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}
-
-
+    
+    public Avion(Long idAvion){
+        this.idAvion = idAvion;
+    }
+	
+	//Relacion de Con la tabla Tiquete
+	@OneToMany(mappedBy = "avion")
+	private Set<Tiquete> tiqueteList;
 	
 
 }

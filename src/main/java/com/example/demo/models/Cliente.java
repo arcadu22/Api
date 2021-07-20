@@ -1,7 +1,7 @@
 package com.example.demo.models;
 
-import java.util.Set;
 
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -36,6 +36,15 @@ public class Cliente {
 	// contructor
 	public Cliente() {
 
+	}
+
+	public Cliente(String nombre, String apellido, int edad, String documento, String email, String telefono) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.documento = documento;
+		this.email = email;
+		this.telefono = telefono;
 	}
 
 	// Metodos Get y Set
@@ -101,13 +110,12 @@ public class Cliente {
 
 	}
 
-	// llave FK
-	@OneToMany(mappedBy = "cliente")
-	private Set<Reserva> reservaList;
+   //Relacion con la tabla Reserva
+	@OneToMany(mappedBy = "cliente" )
+	private Set<Reserva> reservaList ;
 
-	//llave FK Tiquete
-	/*
-	@OneToMany(mappedBy = "tiquete")
+	//Relacion con la tabla Tiquete
+	@OneToMany(mappedBy = "cliente")
 	private Set<Tiquete> tiqueteList;
-*/
+
 }
